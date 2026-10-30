@@ -1,5 +1,6 @@
 import { Ionicons } from "@expo/vector-icons";
-import React, {useState} from "react";
+import { useRouter } from "expo-router";
+import { useState } from "react";
 import {
   FlatList,
   Image,
@@ -12,29 +13,25 @@ import {
   TextInput,
   View,
 } from "react-native";
-import { useRouter } from "expo-router";
 
 const recommendedSongs = [
   {
     id: "1",
     title: "Blinding Lights",
     artist: "The Weeknd",
-    image:
-      "https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=500",
+    image: "https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=500",
   },
   {
     id: "2",
     title: "Starboy",
     artist: "The Weeknd",
-    image:
-      "https://images.unsplash.com/photo-1524368535928-5b5e00ddc76b?w=500",
+    image: "https://images.unsplash.com/photo-1524368535928-5b5e00ddc76b?w=500",
   },
   {
     id: "3",
     title: "After Hours",
     artist: "The Weeknd",
-    image:
-      "https://images.unsplash.com/photo-1516280440614-37939bbacd81?w=500",
+    image: "https://images.unsplash.com/photo-1516280440614-37939bbacd81?w=500",
   },
 ];
 
@@ -43,22 +40,19 @@ const becauseYouListened = [
     id: "4",
     title: "Save Your Tears",
     artist: "The Weeknd",
-    image:
-      "https://images.unsplash.com/photo-1492684223066-81342ee5ff30?w=500",
+    image: "https://images.unsplash.com/photo-1492684223066-81342ee5ff30?w=500",
   },
   {
     id: "5",
     title: "I Feel It Coming",
     artist: "The Weeknd",
-    image:
-      "https://images.unsplash.com/photo-1524368535928-5b5e00ddc76b?w=500",
+    image: "https://images.unsplash.com/photo-1524368535928-5b5e00ddc76b?w=500",
   },
   {
     id: "6",
     title: "In Your Eyes",
     artist: "The Weeknd",
-    image:
-      "https://images.unsplash.com/photo-1501386761578-eac5c94b800a?w=500",
+    image: "https://images.unsplash.com/photo-1501386761578-eac5c94b800a?w=500",
   },
 ];
 
@@ -66,20 +60,17 @@ const discoverArtists = [
   {
     id: "7",
     name: "Frank Ocean",
-    image:
-      "https://images.unsplash.com/photo-1506157786151-b8491531f063?w=500",
+    image: "https://images.unsplash.com/photo-1506157786151-b8491531f063?w=500",
   },
   {
     id: "8",
     name: "Daniel Caesar",
-    image:
-      "https://images.unsplash.com/photo-1524368535928-5b5e00ddc76b?w=500",
+    image: "https://images.unsplash.com/photo-1524368535928-5b5e00ddc76b?w=500",
   },
   {
     id: "9",
     name: "SZA",
-    image:
-      "https://images.unsplash.com/photo-1516280440614-37939bbacd81?w=500",
+    image: "https://images.unsplash.com/photo-1516280440614-37939bbacd81?w=500",
   },
 ];
 
@@ -159,13 +150,7 @@ function SongRow({
   );
 }
 
-function ArtistCard({
-  name,
-  image,
-}: {
-  name: string;
-  image: string;
-}) {
+function ArtistCard({ name, image }: { name: string; image: string }) {
   return (
     <Pressable style={styles.artistCard}>
       <Image source={{ uri: image }} style={styles.artistImage} />
@@ -178,11 +163,10 @@ function ArtistCard({
 }
 
 export default function HomeScreen() {
+  const router = useRouter();
+  const [caption, setCaption] = useState("");
 
-    const router = useRouter();
-    const [caption, setCaption] = useState('');
-
-    //const goToProfile = (authorId) => router.push({pathname: '/profile'})
+  //const goToProfile = (authorId) => router.push({pathname: '/profile'})
 
   return (
     <SafeAreaView style={styles.container}>
@@ -199,15 +183,10 @@ export default function HomeScreen() {
           </View>
 
           <View style={styles.headerButtons}>
-
             {/* PROFILE ICON */}
             <Pressable style={styles.headerButton}>
               {/*<Text style={styles.headerIcon}>●</Text>*/}
-              <Ionicons
-                name="person-outline"
-                size={12}
-                color="#FFF"
-                />
+              <Ionicons name="person-outline" size={12} color="#FFF" />
             </Pressable>
           </View>
         </View>
@@ -312,8 +291,8 @@ export default function HomeScreen() {
           </Text>
 
           <Text style={styles.explanationText}>
-            Your recommendations are based on songs you like, artists you
-            listen to, and your listening patterns.
+            Your recommendations are based on songs you like, artists you listen
+            to, and your listening patterns.
           </Text>
 
           <Pressable>
@@ -423,7 +402,7 @@ const styles = StyleSheet.create({
     color: "#AAAAAA",
     fontSize: 28,
     marginRight: 8,
-    paddingBottom: 5
+    paddingBottom: 5,
   },
 
   searchInput: {
