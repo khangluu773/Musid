@@ -1,7 +1,17 @@
-import { ScrollView, StatusBar, StyleSheet, Text, View } from "react-native";
+import { useState } from "react";
+import { ScrollView, StatusBar, StyleSheet } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
+import Header from "../../components/Header";
+import SearchBar from "../../components/SearchBar";
+
+const searchMusic = async (query: string) => {
+  try {
+    
+  }
+}
 
 export default function Library() {
+  const [searchItems, setSearchItems] = useState("");
   return (
     <SafeAreaView style={{ flex: 1 }}>
       {/* keep the content in a safe area on mobile screen */}
@@ -13,12 +23,12 @@ export default function Library() {
         showsVerticalScrollIndicator={false}
         contentContainerStyle={styles.content}
       >
-        {/* HEADERS */}
-        <View style={styles.header}>
-          <View>
-            <Text>MusID</Text>
-          </View>
-        </View>
+        {/* HEADERS - inside component */}
+        <Header />
+
+        <SearchBar 
+          value={searchItems} 
+          onChangeTexts={setSearchItems} />
       </ScrollView>
     </SafeAreaView>
   );
@@ -33,5 +43,17 @@ const styles = StyleSheet.create({
     paddingBottom: 100,
   },
 
-  header: {},
+  header: {
+    paddingBottom: 10,
+    paddingTop: 10,
+    paddingHorizontal: 18,
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center",
+  },
+  logo: {
+    color: "#FFF",
+    fontSize: 28,
+    fontWeight: "800",
+  },
 });

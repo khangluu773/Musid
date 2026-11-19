@@ -354,7 +354,6 @@ const styles = StyleSheet.create({
     justifyContent: "space-between",
     alignItems: "center",
   },
-
   logo: {
     color: "#FFFFFF",
     fontSize: 28,
