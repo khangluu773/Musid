@@ -1,12 +1,38 @@
 import { useState } from "react";
-import { ScrollView, StatusBar, StyleSheet } from "react-native";
+import { Button, ScrollView, StatusBar, StyleSheet } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import Header from "../../components/Header";
 import SearchBar from "../../components/SearchBar";
 
 const searchMusic = async (query: string) => {
   try {
-    
+    const response = await fetch(
+      `http://localhost:3000/api/search?q=${encodeURIComponent(query)}`
+    );
+
+    const data = await response.json();
+
+    console.log(data);
+  } catch (error) {
+    console.error("Search failed:", error)
+  }
+};
+
+const testBackend = async () => {
+  try {
+    const response = await fetch(
+      "http://localhost:3000/api/test"
+    );
+
+    if (!response.ok) {
+      throw new Error("Backend request failed");
+    }
+
+    const data = await response.json();
+
+    console.log(data);
+  } catch (error) {
+    console.log("Connection failed: ", error);
   }
 }
 
@@ -29,6 +55,11 @@ export default function Library() {
         <SearchBar 
           value={searchItems} 
           onChangeTexts={setSearchItems} />
+
+        <Button
+          title="Test Backend connection"
+          onPress={testBackend}
+        />
       </ScrollView>
     </SafeAreaView>
   );
